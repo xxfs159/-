@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI 写周报机器人</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">项目 3</p>
+        <h1>AI 写周报机器人</h1>
+      </div>
+      <div class="top-actions">
+        <span id="entryCount" class="status-pill">0 条记录</span>
+        <button id="promptBtn" type="button">复制润色 Prompt</button>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <section class="input-pane" aria-label="流水账输入">
+        <div class="field-row">
+          <label for="weekLabel">周报周期</label>
+          <input id="weekLabel" type="text" autocomplete="off" />
+        </div>
+
+        <div class="textarea-head">
+          <label for="rawInput">流水账记录</label>
+          <span id="voiceStatus">语音输入</span>
+        </div>
+        <textarea id="rawInput" spellcheck="false"></textarea>
+
+        <div class="button-grid">
+          <button id="analyzeBtn" class="primary" type="button">生成周报</button>
+          <button id="sampleBtn" type="button">载入示例</button>
+          <button id="voiceBtn" type="button">开始听写</button>
+          <button id="clearBtn" type="button">清空</button>
+          <label class="file-button">
+            导入日志
+            <input id="importLog" type="file" accept=".txt,.md,.csv" />
+          </label>
+          <label class="file-button">
+            导入上周 KPI
+            <input id="importPrevious" type="file" accept=".json" />
+          </label>
+        </div>
+
+        <div class="small-note" id="previousStatus">已加载示例上周 KPI，可导入 JSON 覆盖。</div>
+      </section>
+
+      <section class="output-pane" aria-label="周报输出">
+        <section class="summary-strip">
+          <span>摘要</span>
+          <p id="summaryText"></p>
+        </section>
+
+        <section class="kpi-grid" id="kpiGrid" aria-label="KPI 指标"></section>
+
+        <section class="visual-grid">
+          <div class="chart-panel">
+            <div class="section-head">
+              <h2>任务分布</h2>
+            </div>
+            <div id="distributionChart" class="bar-chart"></div>
+          </div>
+
+          <div class="chart-panel">
+            <div class="section-head">
+              <h2>周环比</h2>
+            </div>
+            <div id="comparisonTable" class="comparison-table"></div>
+          </div>
+        </section>
+
+        <section class="list-grid">
+          <article>
+            <h2>主要成果</h2>
+            <ul id="resultList"></ul>
+          </article>
+          <article>
+            <h2>问题与风险</h2>
+            <ul id="issueList"></ul>
+          </article>
+          <article>
+            <h2>下周计划</h2>
+            <ul id="planList"></ul>
+          </article>
+        </section>
+
+        <section class="markdown-panel">
+          <div class="section-head">
+            <h2>Markdown 周报</h2>
+            <div class="compact-actions">
+              <button id="copyBtn" type="button">复制</button>
+              <button id="downloadBtn" type="button">下载 MD</button>
+              <button id="exportJsonBtn" type="button">导出 KPI JSON</button>
+            </div>
+          </div>
+          <textarea id="markdownOutput" readonly spellcheck="false"></textarea>
+        </section>
+      </section>
+    </main>
+
+    <script src="./engine.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

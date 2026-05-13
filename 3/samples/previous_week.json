@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "weekLabel": "上周示例",
+  "kpi": {
+    "taskTotal": 7,
+    "completed": 4,
+    "completionRate": 57,
+    "delayed": 2,
+    "outputs": 3,
+    "issues": 2,
+    "risks": 1,
+    "plans": 4
+  }
+}
