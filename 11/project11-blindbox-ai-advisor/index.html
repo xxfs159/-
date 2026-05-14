@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>盲盒 AI 推荐员</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="kicker">项目 11</p>
+        <h1>盲盒 AI 推荐员</h1>
+      </div>
+      <div class="header-actions">
+        <span id="profileScore" class="score-pill">画像完整度 0%</span>
+        <button id="sampleBtn" type="button">示例偏好</button>
+        <button id="resetBtn" type="button">重置</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="chat-pane" aria-label="聊天式偏好采集">
+        <div class="pane-head">
+          <h2>偏好对话</h2>
+          <span id="nextHint">等待输入</span>
+        </div>
+        <div id="chatLog" class="chat-log"></div>
+        <div class="quick-chips" aria-label="快捷偏好">
+          <button type="button" data-chip="我预算 80 以内，喜欢可爱治愈、粉色，想送朋友，不接受高溢价。">送礼稳妥</button>
+          <button type="button" data-chip="我喜欢酷一点的机甲猫或赛博风，预算 100 左右，自留做桌面摆件。">酷感桌搭</button>
+          <button type="button" data-chip="我想收藏梦幻一点的稀有款，可以接受隐藏款溢价，偏蓝色或银色。">收藏稀有</button>
+        </div>
+        <form id="chatForm" class="chat-form">
+          <textarea
+            id="userInput"
+            rows="3"
+            placeholder="告诉我你喜欢的 IP、预算、风格、颜色、用途、是否接受隐藏款溢价..."
+          ></textarea>
+          <button class="primary" type="submit">发送</button>
+        </form>
+      </section>
+
+      <section class="insight-pane" aria-label="推荐结果">
+        <section class="profile-band">
+          <div class="pane-head">
+            <h2>兴趣画像</h2>
+            <button id="exportBtn" type="button">导出报告</button>
+          </div>
+          <div id="profileTags" class="tag-wall"></div>
+          <p id="profileSummary" class="profile-summary"></p>
+        </section>
+
+        <section class="recommendation-layout">
+          <article class="top-card">
+            <div class="pane-head">
+              <h2>最佳推荐</h2>
+              <span id="topScore">0%</span>
+            </div>
+            <div id="topRecommendation"></div>
+          </article>
+
+          <article class="compare-card">
+            <div class="pane-head">
+              <h2>候选对比</h2>
+              <span>Top 5</span>
+            </div>
+            <div id="compareTable" class="table-wrap"></div>
+          </article>
+        </section>
+
+        <section class="card-strip">
+          <div class="pane-head">
+            <h2>推荐清单</h2>
+            <span>按匹配度排序</span>
+          </div>
+          <div id="recommendationList" class="product-grid"></div>
+        </section>
+
+        <section class="knowledge-base">
+          <div class="pane-head">
+            <h2>商品知识库</h2>
+            <div class="filter-bar" id="styleFilter"></div>
+          </div>
+          <div id="catalogList" class="catalog-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="./engine.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

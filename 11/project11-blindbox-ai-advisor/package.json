@@ -1,0 +1,8 @@
+{
+  "name": "project11-blindbox-ai-advisor",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node tests/engine.test.js"
+  }
+}
